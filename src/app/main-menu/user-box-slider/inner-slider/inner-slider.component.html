@@ -1,0 +1,8 @@
+<div class="slider-container">
+  <button class="slider-head"
+          appInnerSlider
+          [initialValue]="initialValue"
+          (valueSet)="emitInnerSliderValue($event)">
+    <div class="event-area"></div>
+  </button>
+</div>

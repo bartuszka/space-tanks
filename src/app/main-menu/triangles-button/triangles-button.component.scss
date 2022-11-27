@@ -1,0 +1,49 @@
+@import '../library-styles';
+
+:host {
+  display: inline-block;
+}
+
+.triangle-button-container {
+  position: relative;
+  cursor: pointer;
+  @include glow;
+
+  #triangle-button-label {
+    position: absolute;
+    color: white;
+    transition: all .3s;
+    text-shadow: -1px -1px 0 red, 1px -1px 0 red, -1px 1px 0 red, 1px 1px 0 red;
+    z-index: 3;
+    font-size: $button-font-size;
+    pointer-events: none;
+    padding: $button-padding;
+    @include position-zero;
+    @include not-selectable;
+  }
+}
+
+#triangle-button {
+  position: relative;
+  margin: 0;
+  border: none;
+  width: 100%;
+  color: transparent;
+  background-color: red;
+  z-index: 0;
+  font-size: $button-font-size;
+  pointer-events: none;
+  padding: $button-padding;
+  @include not-selectable;
+}
+
+#triangle-button-canvas {
+  position: absolute;
+  z-index: 1;
+  @include position-zero;
+
+  &:active ~#triangle-button-label {
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+    color: rgb(200 0 0);
+  }
+}

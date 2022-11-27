@@ -1,0 +1,45 @@
+@import "../select-weapon-styles";
+
+.cornered-container {
+  position: relative;
+  padding: 20px;
+  background: transparent;
+  border: $border-width solid transparent;
+  border-image: url('/assets/images/backgrounds/border-square-ok.png') 15 repeat;
+  @include corners(-7px);
+
+  .border {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .border-top-left {
+    top: 0;
+    left: 0;
+    margin: (-$border-width) 0 0 (-$border-width);
+    @include component-border(solid, true, true, false, false);
+  }
+
+  .border-top-right {
+    top: 0;
+    right: 0;
+    margin: (-$border-width) (-$border-width) 0;
+    @include component-border(solid, true, false, true, false);
+  }
+
+  .border-bottom-right {
+    bottom: 0;
+    right: 0;
+    margin: 0 (-$border-width) (-$border-width) 0;
+    @include component-border(solid, false, false, true, true);
+  }
+
+  .border-bottom-left {
+    bottom: 0;
+    left: 0;
+    margin: 0 0 (-$border-width) (-$border-width);
+    @include component-border(solid, false, true, false, true);
+  }
+}

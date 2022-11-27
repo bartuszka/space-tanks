@@ -1,0 +1,9 @@
+<div class="select-weapon-slider-container">
+  <app-select-weapon-button class="select-weapon-slider-head"
+                            appSelectWeaponSlider
+                            [rowsNumber]="rowsNumber"
+                            [visibleRowsNumber]="visibleRowsNumber"
+                            [step]="step"
+                            (scrollingStepSet)="emitScrollingStep($event);">
+  </app-select-weapon-button>
+</div>

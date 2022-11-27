@@ -1,0 +1,11 @@
+@import '../library-styles';
+
+input {
+  @include user-box-component;
+  pointer-events: all;
+
+  &:focus {
+    border-style: inset;
+    background-color: transparent;
+  }
+}

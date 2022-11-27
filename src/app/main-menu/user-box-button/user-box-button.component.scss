@@ -1,0 +1,17 @@
+@import '../library-styles';
+
+button {
+  @include not-selectable;
+  @include user-box-component;
+  cursor: pointer;
+  pointer-events: all;
+
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  &.padding-for-images {
+    padding: 0;
+  }
+}

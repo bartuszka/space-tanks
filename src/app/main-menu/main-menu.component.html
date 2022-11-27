@@ -1,0 +1,20 @@
+<div *ngIf="users" class="menu-container">
+  <div class="menu-first-row-buttons">
+    <app-laser-button label="Start Game" (click)="goToSelectWeapon()"></app-laser-button>
+    <app-laser-button label="Load Game"></app-laser-button>
+    <app-laser-button label="Options"></app-laser-button>
+  </div>
+  <div class="menu-second-row-buttons">
+    <app-laser-button label="Info"></app-laser-button>
+    <app-laser-stepper label="Rounds"></app-laser-stepper>
+    <app-laser-button label="Quit"></app-laser-button>
+  </div>
+  <div class="users">
+    <app-user-box *ngFor="let user of users; let i = index"
+                  class="user"
+                  [boxId]="i + 1"
+                  [user]="user"
+                  (userChanged)="updateUser($event)">
+    </app-user-box>
+  </div>
+</div>

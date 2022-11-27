@@ -1,0 +1,59 @@
+<form appUserBoxFocusOut
+      (userBoxFocusedOut)="emitUserData()"
+      [formGroup]="userForm" id="user-box-container">
+
+  <canvas #userBoxCanvas id="user-box-canvas"></canvas>
+
+  <div #userBox id="user-box">
+    <div class="row">
+      <app-user-box-input class="tank-number"
+                          [isDisabled]="true"
+                          [value]="'Tank ' + boxId">
+      </app-user-box-input>
+      <app-user-box-button [states]="userModesArray"
+                           [currentState]="userForm.value.mode"
+                           [label]="userButtonData[userForm.value.mode].userBoxButtonLabel"
+                           [src]="userButtonData[userForm.value.mode].userBoxButtonSrc"
+                           (stateChanged)="changeUserMode($event)">
+      </app-user-box-button>
+    </div>
+
+    <div class="row" *ngIf="userForm.value.mode !== userModes.OFF">
+      <app-user-box-input class="user-name"
+                          formControlName="name"
+                          [isDisabled]="userForm.value.mode !== userModes.HUMAN">
+      </app-user-box-input>
+    </div>
+
+    <div class="row" *ngIf="userForm.value.mode === userModes.HUMAN">
+      <app-user-box-slider startLabel="Starting Money"
+                           valueLabel="$"
+                           formControlName="money"
+                           [minValue]="5000"
+                           [maxValue]="50000">
+      </app-user-box-slider>
+    </div>
+
+    <ng-container *ngIf="userForm.value.mode === userModes.COMPUTER">
+      <div class="row">
+        <app-user-box-slider startLabel="Stupid"
+                             formControlName="intellect"
+                             middleLabel="I.Q."
+                             endLabel="Smart">
+        </app-user-box-slider>
+      </div>
+
+      <div class="row">
+        <app-user-box-slider class="small-font"
+                             formControlName="aggressiveness"
+                             startLabel="Defensive"
+                             endLabel="Offensive">
+        </app-user-box-slider>
+      </div>
+    </ng-container>
+
+    <img class="tank-image"
+         [src]="'./assets/images/icons/tank_' + boxId + '.png'"
+         alt="player tank">
+  </div>
+</form>

@@ -1,0 +1,13 @@
+<div id="laser-stepper-container" (mouseleave)="removeFocus(arrowLeftButton, arrowRightButton)">
+  <div class="laser-container">
+    <div class="label">{{ label }}</div>
+    <button #arrowLeftButton class="arrow-left-button" (click)="subtractRound()"><</button>
+    <input type="number" class="stepper-input" [(ngModel)]="rounds" disabled>
+    <button #arrowRightButton class="arrow-right-button" (click)="addRound()">></button>
+
+    <div class="glow-line glow-line-horizontal-left"></div>
+    <div class="glow-line glow-line-horizontal-right"></div>
+    <div class="glow-line glow-line-vertical-top"></div>
+    <div class="glow-line glow-line-vertical-bottom"></div>
+  </div>
+</div>

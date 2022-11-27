@@ -1,0 +1,36 @@
+@import '../library-styles';
+
+:host.small-font {
+  .slider-container {
+    font-size: $button-font-size-small;
+  }
+}
+
+.slider-container {
+  @include user-box-component;
+  display: block;
+}
+
+.labels {
+  @include not-selectable;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+
+  span {
+    display: inline-block;
+
+    &:first-child {
+      text-align: left;
+    }
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+}
+
+.slider-value-label {
+  @include not-selectable;
+  margin-top: 5px;
+}

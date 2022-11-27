@@ -1,0 +1,14 @@
+<div class="slider-container not-active">
+  <div *ngIf="startLabel || endLabel || middleLabel" class="labels">
+    <span>{{ startLabel }}</span>
+    <span>{{ middleLabel }}</span>
+    <span>{{ endLabel }}</span>
+  </div >
+  <app-inner-slider (innerSliderValueSet)="value = $event"
+                    (focusout)="onBlur()"
+                    [minValue]="minValue"
+                    [maxValue]="maxValue"
+                    [initialValue]="value">
+  </app-inner-slider>
+  <div *ngIf="!!valueLabel" class="slider-value-label">{{ valueLabel }} {{ value }}</div>
+</div>

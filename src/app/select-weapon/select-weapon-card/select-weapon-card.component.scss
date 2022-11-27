@@ -1,0 +1,13 @@
+@import "../select-weapon-styles";
+
+:host {
+  display: inline-block;
+}
+
+.weapon-card-container {
+  @include corners;
+  box-sizing: border-box;
+  position: relative;
+  padding: 16px;
+  background-color: $background-color-violet;
+}

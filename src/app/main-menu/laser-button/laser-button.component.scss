@@ -1,0 +1,15 @@
+@import '../library-styles';
+
+:host {
+  display: inline-block;
+}
+
+.button-container {
+  display: inline-block;
+  position: relative;
+  margin: $button-margin $button-margin;
+
+  .laser-container {
+    @include laser-container;
+  }
+}

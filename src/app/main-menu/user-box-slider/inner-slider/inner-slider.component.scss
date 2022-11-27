@@ -1,0 +1,39 @@
+@import '../../library-styles';
+
+:host {
+  width: 100%;
+}
+
+.slider-container {
+  @include user-box-component-border;
+  position: relative;
+  height: 12px;
+  border-style: inset;
+
+  .slider-head {
+    @include user-box-component-border;
+    @include position-zero;
+    position: absolute;
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 30px;
+    height: 100%;
+    background-color: black;
+
+    &:focus {
+      background-color: rgba(80,0,0,1) !important;
+    }
+
+    .event-area {
+      outline: none;
+      border: none;
+      pointer-events: all;
+      position: absolute;
+      top: -20px;
+      left: -13px;
+      width: 50px;
+      height: 40px;
+      background-color: transparent;
+    }
+  }
+}

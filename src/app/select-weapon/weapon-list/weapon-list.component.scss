@@ -1,0 +1,106 @@
+@import "../select-weapon-styles";
+
+$table-padding-top: 20px;
+
+.weapon-list-container {
+  padding: 20px;
+
+  app-select-weapon-card {
+    width: 800px;
+    display: block;
+
+    .summary-header-line {
+      padding-bottom: 15px;
+      border-bottom: solid $select-weapon-text-color 1px;
+    }
+
+    .flex-container-row {
+      display: flex;
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+
+        .titles-header-line {
+          td {
+            padding-top: $table-padding-top;
+            padding-bottom: 15px;
+          }
+        }
+
+        td {
+          line-height: 30px;
+          height: 30px;
+          width: 33.3%;
+          border-color: transparent;
+
+          &.name-cell {
+            width: 40%;
+          }
+
+          &.price-cell {
+            width: 40%;
+          }
+
+          &.quantity-cell {
+            width: 20%;
+          }
+        }
+      }
+
+      app-select-weapon-slider {
+        height: 100%;
+        width: 20px;
+        padding-top: $table-padding-top;
+      }
+
+      table, tr, td {
+        border: solid white 1px;
+      }
+
+      .table-col {
+        margin-right: 20px;
+        width: 70%;
+      }
+
+      .buttons-first-col, .buttons-second-col {
+        justify-content: space-between;
+        padding-top: $table-padding-top;
+
+        app-select-weapon-button {
+          width: 100%;
+
+          &.half-width {
+            width: 50%;
+          }
+
+          &.arrow-up, &.arrow-down {
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+
+          &.arrow-up {
+            background-image: url('/assets/images/icons/arrow-up.png');
+          }
+
+          &.arrow-down {
+            background-image: url('/assets/images/icons/arrow-down.png');
+          }
+        }
+      }
+
+      .buttons-first-col {
+        width: 10%;
+
+        app-select-weapon-button {
+          height: 100%;
+        }
+      }
+
+      .buttons-second-col {
+        width: 20%;
+        padding-left: 20px;
+      }
+    }
+  }
+}

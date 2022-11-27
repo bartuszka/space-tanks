@@ -1,0 +1,9 @@
+<div class="cornered-container">
+  <div *ngFor="let corner of cornersArray; let i = index">
+    <div [class]="'border border-' + cornersArray[i]"></div>
+  </div>
+  <div *ngFor="let corner of cornersArray; let i = index">
+    <div [class]="'corner corner-' + cornersArray[i]"></div>
+  </div>
+  <ng-content></ng-content>
+</div>

@@ -1,0 +1,18 @@
+@import "../select-weapon-styles";
+
+.select-weapon-slider-container {
+  position: relative;
+  box-sizing: border-box;
+  width: inherit;
+  height: inherit;
+  border: 1px solid $border-color;
+
+  .select-weapon-slider-head {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    box-sizing: border-box;
+
+    button {}
+  }
+}

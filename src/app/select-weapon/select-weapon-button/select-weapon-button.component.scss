@@ -1,0 +1,28 @@
+@import "../select-weapon-styles";
+
+button {
+  vertical-align: top;
+  outline: none;
+  box-sizing: border-box;
+  display: inline-block;
+  width: inherit;
+  height: inherit;
+  background-color: transparent;
+  border: solid $border-color 1px;
+  cursor: pointer;
+  transition: border .5s;
+  box-shadow: 0 0 4px $border-color inset;
+
+  &:hover {
+    border-color: $border-hover-color;
+  }
+
+  &:active {
+    background-image: linear-gradient(to bottom right, transparent, rgba(255,255,255,.2));
+  }
+
+  &:focus-visible {
+    border-color: $border-hover-color;
+    background-image: linear-gradient(to bottom right, transparent, rgba(255,255,255,.2));
+  }
+}

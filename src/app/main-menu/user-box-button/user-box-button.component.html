@@ -1,0 +1,9 @@
+<button (click)="switch()"
+        [class.padding-for-images]="!!src">
+
+  <span *ngIf="label">{{ label }}</span>
+
+  <img *ngIf="src"
+       [src]="src"
+       alt="user box icon">
+</button>

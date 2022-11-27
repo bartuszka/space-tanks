@@ -1,0 +1,49 @@
+@import '../library-styles';
+
+#laser-stepper-container {
+  margin: $button-margin $button-margin;
+
+  :has(button:active) {
+    .stepper-input {
+      color: red;
+    }
+  }
+}
+
+.laser-container {
+  @include laser-container;
+
+  button {
+    &:focus {
+      color: red;
+    }
+  }
+
+  .stepper-input , .label {
+    padding: $button-padding;
+    color: white;
+  }
+
+  .label {
+    display: inline-block;
+    margin-right: 5px;
+    @include not-selectable;
+  }
+
+  .stepper-input {
+    @include no-arrows-input;
+    width: 50px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-size: $button-font-size;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .arrow-left-button, .arrow-right-button {
+    padding: $button-padding;
+    font-size: 25px;
+    line-height: 12px;
+  }
+}

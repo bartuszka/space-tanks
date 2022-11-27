@@ -1,0 +1,80 @@
+$select-weapon-text-color: rgba(255,255,255,.7);
+$background-color-violet: rgba(120,60,255,.3);
+$background-button-color-violet: rgba(128,0,255,.2);
+$border-color: rgba(68,96,171,1);
+$border-hover-color: rgba(92,129,229,1);
+$border-width: 8px;
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', 'sans-serif';
+  font-weight: normal;
+  font-size: 20px;
+  color: $select-weapon-text-color;
+}
+
+@mixin component-border($border-style, $top: false, $left: false, $right: false, $bottom: false) {
+  @if $top {
+    border-top: $border-color $border-style 4px;
+  }
+
+  @if $left {
+    border-left: $border-color $border-style 4px;
+  }
+
+  @if $right {
+    border-right: $border-color $border-style 4px;
+  }
+
+  @if $bottom {
+    border-bottom: $border-color $border-style 4px;
+  }
+}
+
+@mixin corners($fix-margin: 0) {
+  .corner {
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    position: absolute;
+  }
+
+  .corner-top-left {
+    left: 0;
+    top: 0;
+    margin-top: $fix-margin;
+    margin-left: $fix-margin;
+  }
+
+  .corner-top-right {
+    right: 0;
+    top: 0;
+    margin-top: $fix-margin;
+    margin-right: $fix-margin;
+  }
+
+  .corner-bottom-right {
+    right: 0;
+    bottom: 0;
+    margin-bottom: $fix-margin;
+    margin-right: $fix-margin;
+  }
+
+  .corner-bottom-left {
+    left: 0;
+    bottom: 0;
+    margin-bottom: $fix-margin;
+    margin-left: $fix-margin;
+  }
+}
+
+.flex-container-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-container-col {
+  display: flex;
+  flex-direction: column;
+}
