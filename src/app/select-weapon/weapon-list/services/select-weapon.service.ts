@@ -2,9 +2,11 @@ import {Weapon} from "../models/weapon.model";
 import {WeaponState, weaponStateInitialData} from "../models/weapon-state.model";
 import {BehaviorSubject, map, Observable} from "rxjs";
 import {Injectable} from "@angular/core";
+import {User} from "../../../models/user.model";
+import {ScrollingPosition} from "../models/scrolling-position";
 
 @Injectable()
-export class WeaponsListService {
+export class SelectWeaponService {
   public weaponState$: Observable<WeaponState>;
   public visibleWeapons$: Observable<Weapon[]>;
 
@@ -24,13 +26,19 @@ export class WeaponsListService {
     return this.weaponStateSubject$.getValue().weaponList.length;
   }
 
-  public moveFirstVisibleWeapon(itemsNumber: number): void {
+  public moveFirstVisibleWeapon(itemsNumber: number): ScrollingPosition {
     const state = { ...this.weaponStateSubject$.getValue() };
 
-    if (state.firstVisibleWeapon + itemsNumber < 0 || state.firstVisibleWeapon + state.weaponsOnPage + itemsNumber > state.weaponList.length) {
-      return;
+    if (state.firstVisibleWeapon + itemsNumber < 0) {
+      return ScrollingPosition.TOP;
     }
+
+    if (state.firstVisibleWeapon + state.weaponsOnPage + itemsNumber > state.weaponList.length) {
+      return ScrollingPosition.BOTTOM;
+    }
+
     this.weaponStateSubject$.next({ ...state, firstVisibleWeapon: state.firstVisibleWeapon + itemsNumber });
+    return ScrollingPosition.MIDDLE;
   }
 
   public setFirstVisibleWeapon(itemNumber: number): void {
@@ -54,5 +62,9 @@ export class WeaponsListService {
         return weaponState.weaponList.slice(firstWeaponIndex, lastWeaponIndex);
       })
     );
+  }
+
+  public setCurrentActiveUserId(currentActiveUserId: number): void {
+    this.weaponStateSubject$.next({ ...this.weaponStateSubject$.getValue(), currentActiveUserId });
   }
 }

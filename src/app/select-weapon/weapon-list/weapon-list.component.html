@@ -1,8 +1,11 @@
 <div *ngIf="weaponsWithQuantity$ | async as visibleWeapons"
      class="weapon-list-container">
-  <app-cornered-container>
+  <app-cornered-container *ngIf="activeUser$ | async as activeUser">
     <app-select-weapon-card>
-      <h2 class="summary-header-line">Money left: $</h2>
+      <h2 class="summary-header-line">
+        <div>{{ activeUser.name }}</div>
+        <div>Money left: $ {{ activeUser.money }}</div>
+      </h2>
       <div class="flex-container-row">
         <div class="flex-container-row table-col">
           <table>
@@ -14,9 +17,10 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let weaponWithQuantity of visibleWeapons">
-              <td class="name-cell">{{ weaponWithQuantity.weapon.weaponName }}</td>
-              <td class="price-cell">$ {{ weaponWithQuantity.weapon.price }}</td>
+            <tr *ngFor="let weaponWithQuantity of visibleWeapons"
+                [class.selected]="selectedWeapon.item.id === weaponWithQuantity.item.id">
+              <td class="name-cell">{{ weaponWithQuantity.item.name }}</td>
+              <td class="price-cell">$ {{ weaponWithQuantity.item.price }}</td>
               <td class="quantity-cell">{{ weaponWithQuantity.quantity }}</td>
             </tr>
             </tbody>
@@ -39,8 +43,8 @@
         <div class="flex-container-col buttons-second-col">
           <app-select-weapon-button label="Top"></app-select-weapon-button>
           <div>
-            <app-select-weapon-button class="half-width" label="Buy"></app-select-weapon-button>
-            <app-select-weapon-button class="half-width" label="Sell"></app-select-weapon-button>
+            <app-select-weapon-button class="half-width" label="Buy" (click)="addWeapon(activeUser)"></app-select-weapon-button>
+            <app-select-weapon-button class="half-width" label="Sell" (click)="subtractWeapon(activeUser)"></app-select-weapon-button>
           </div>
           <app-select-weapon-button label="DONE"></app-select-weapon-button>
         </div>

@@ -1,4 +1,4 @@
-<div *ngIf="users" class="menu-container">
+<div *ngIf="users$ | async as users" class="menu-container">
   <div class="menu-first-row-buttons">
     <app-laser-button label="Start Game" (click)="goToSelectWeapon()"></app-laser-button>
     <app-laser-button label="Load Game"></app-laser-button>

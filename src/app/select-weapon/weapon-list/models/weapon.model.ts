@@ -1,10 +1,10 @@
 export class Weapon {
   id: number;
-  weaponName: string;
+  name: string;
   weight: number;
   range: number;
   strength: number;
-  explosionAppearance: string;
+  appearance: string;
   spreadSpeed: number;
   price: number;
   rollingRange?: number;

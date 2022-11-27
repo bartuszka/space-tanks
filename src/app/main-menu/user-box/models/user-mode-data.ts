@@ -19,6 +19,7 @@ export const userModeData: { [key: string]: UserModeData } = {
       mode: UserMode.HUMAN,
       money: 25000,
       weapons: [],
+      shields: [],
       intellect: null,
       aggressiveness: null,
     }
@@ -33,6 +34,7 @@ export const userModeData: { [key: string]: UserModeData } = {
       mode: UserMode.COMPUTER,
       money: null,
       weapons: [],
+      shields: [],
       intellect: 50,
       aggressiveness: 50,
     }
@@ -47,6 +49,7 @@ export const userModeData: { [key: string]: UserModeData } = {
       mode: UserMode.OFF,
       money: null,
       weapons: null,
+      shields: null,
       intellect: null,
       aggressiveness: null,
     },

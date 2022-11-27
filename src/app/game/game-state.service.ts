@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {BehaviorSubject, Observable} from "rxjs";
 import {GameState} from "../models/game-state";
 import {User} from "../models/user.model";
+import {UserWeapon} from "../models/user-weapon.model";
 
 @Injectable()
 export class GameStateService {
@@ -17,10 +18,6 @@ export class GameStateService {
     this.gameStateSubject$.next({ ...state });
   }
 
-  public getUsers(): User[] {
-    return [ ...this.gameStateSubject$.getValue().users ];
-  }
-
   public setUsers(users: User[]): void {
     const currentState: GameState = this.gameStateSubject$.getValue();
     this.gameStateSubject$.next({ ...currentState, users: [ ...users ] });
@@ -34,8 +31,44 @@ export class GameStateService {
     this.gameStateSubject$.next({ ...currentState, users: currentUsers });
   }
 
-  public setActiveUsers(activeUsers: User[]): void {
-    console.log('activeUsers', activeUsers)
-    this.gameStateSubject$.next({ ...this.gameStateSubject$.getValue(), activeUsers: [ ...activeUsers ] });
+  public addWeapon(user: User, weapon: UserWeapon): void {
+    const updatedUser: User = { ...user };
+    const existingWeaponIndex: number = updatedUser.weapons.findIndex((userWeapon: UserWeapon) =>
+      userWeapon.item.id === weapon.item.id);
+    const updatedMoney: number = user.money - weapon.item.price;
+
+    if (updatedMoney < 0) {
+      return;
+    }
+
+    if (existingWeaponIndex !== -1) {
+      updatedUser.weapons[existingWeaponIndex].quantity ++;
+    } else {
+      updatedUser.weapons.push({ ...weapon, quantity: 1 });
+    }
+
+    updatedUser.money = updatedMoney;
+    this.setUser(updatedUser);
+  }
+
+  public subtractWeapon(user: User, weapon: UserWeapon): void {
+    const updatedUser: User = { ...user };
+    const existingWeaponIndex: number = updatedUser.weapons.findIndex((userWeapon: UserWeapon) =>
+      userWeapon.item.id === weapon.item.id);
+    const updatedMoney: number = user.money + weapon.item.price;
+    const updatedQuantity: number = updatedUser.weapons[existingWeaponIndex].quantity - 1;
+
+    if (updatedQuantity < 0) {
+      return;
+    }
+
+    if (existingWeaponIndex !== -1) {
+      updatedUser.weapons[existingWeaponIndex].quantity = updatedQuantity;
+    } else {
+      return;
+    }
+
+    updatedUser.money = updatedMoney;
+    this.setUser(updatedUser);
   }
 }

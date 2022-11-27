@@ -8,6 +8,6 @@
   @include corners;
   box-sizing: border-box;
   position: relative;
-  padding: 16px;
+  padding: $weapon-card-padding;
   background-color: $background-color-violet;
 }

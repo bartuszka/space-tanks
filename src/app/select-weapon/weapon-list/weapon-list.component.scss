@@ -1,15 +1,17 @@
 @import "../select-weapon-styles";
 
-$table-padding-top: 20px;
+$table-padding: 20px;
 
 .weapon-list-container {
-  padding: 20px;
+  padding: $table-padding;
 
   app-select-weapon-card {
     width: 800px;
     display: block;
 
     .summary-header-line {
+      display: flex;
+      justify-content: space-between;
       padding-bottom: 15px;
       border-bottom: solid $select-weapon-text-color 1px;
     }
@@ -17,14 +19,43 @@ $table-padding-top: 20px;
     .flex-container-row {
       display: flex;
 
+      table, tr, td {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+
       table {
         width: 100%;
-        border-collapse: collapse;
 
         .titles-header-line {
           td {
-            padding-top: $table-padding-top;
+            padding-top: $table-padding;
             padding-bottom: 15px;
+          }
+        }
+
+        tr {
+          cursor: pointer;
+          position: relative;
+        }
+
+        tr.selected {
+          outline: none;
+          background-color: rgba(255,255,255,.1);
+
+          td {
+            &:before {
+              box-sizing: border-box;
+              content: '';
+              margin-left: -$weapon-card-padding;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 7px;
+              height: 100%;
+              border-top: solid white 1px;
+              border-bottom: solid white 1px;
+            }
           }
         }
 
@@ -51,7 +82,7 @@ $table-padding-top: 20px;
       app-select-weapon-slider {
         height: 100%;
         width: 20px;
-        padding-top: $table-padding-top;
+        padding-top: $table-padding;
       }
 
       table, tr, td {
@@ -65,7 +96,7 @@ $table-padding-top: 20px;
 
       .buttons-first-col, .buttons-second-col {
         justify-content: space-between;
-        padding-top: $table-padding-top;
+        padding-top: $table-padding;
 
         app-select-weapon-button {
           width: 100%;
