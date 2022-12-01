@@ -1,6 +1,5 @@
 import {Shield} from "../select-weapon/weapon-list/models/shield.model";
 
-export interface UserShield {
-  item: Shield;
-  quantity: number;
+export class UserShield {
+  constructor(public item: Shield, public quantity: number) {}
 }

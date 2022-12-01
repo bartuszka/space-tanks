@@ -1,0 +1,105 @@
+@import "../select-weapon-styles";
+
+$buttons-width: 80px;
+$slider-width: 20px;
+
+:host {
+  width: 100%;
+
+  .weapon-list-container {
+    .flex-container-row {
+      .table-col {
+        margin-right: 20px;
+        width: calc(100% - #{ $buttons-width + $slider-width });
+
+        table, tr, td {
+          border-collapse: collapse;
+          border-spacing: 0;
+        }
+
+        table {
+          width: 100%;
+
+          tr {
+            cursor: pointer;
+            position: relative;
+          }
+
+          tr.selected {
+            background-color: rgba(255,255,255,.1);
+
+            td {
+              &:before {
+                box-sizing: border-box;
+                content: '';
+                margin-left: -$weapon-card-padding;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 7px;
+                height: 100%;
+                border-top: solid white 1px;
+                border-bottom: solid white 1px;
+              }
+            }
+          }
+
+          td {
+            line-height: 30px;
+            height: 30px;
+            width: 33.3%;
+            border-color: transparent;
+
+            &.name-cell {
+              width: 40%;
+            }
+
+            &.price-cell {
+              width: 40%;
+            }
+
+            &.quantity-cell {
+              width: 20%;
+            }
+          }
+
+          .titles-header-line {
+            td {
+              padding-bottom: 15px;
+            }
+          }
+        }
+      }
+
+      .slider-col {
+        app-select-weapon-slider {
+          height: 100%;
+          width: $slider-width;
+        }
+      }
+
+      .buttons-col {
+        justify-content: space-between;
+        width: $buttons-width;
+
+        app-select-weapon-button {
+          height: 100%;
+          width: 100%;
+
+          &.arrow-up, &.arrow-down {
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+
+          &.arrow-up {
+            background-image: url('/assets/images/icons/arrow-up.png');
+          }
+
+          &.arrow-down {
+            background-image: url('/assets/images/icons/arrow-down.png');
+          }
+        }
+      }
+    }
+  }
+}

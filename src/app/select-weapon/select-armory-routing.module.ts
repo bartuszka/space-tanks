@@ -1,13 +1,13 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {SelectWeaponComponent} from "./select-weapon.component";
 import {SelectWeaponResolver} from "./weapon-list/services/select-weapon.resolver";
+import {SelectArmoryComponent} from "./select-armory.component";
 
 const selectWeaponRoutes: Routes = [
   {
     path: 'user/:id',
     pathMatch: 'full',
-    component: SelectWeaponComponent,
+    component: SelectArmoryComponent,
     resolve: { activeUsers: SelectWeaponResolver },
   }
 ];
@@ -20,4 +20,4 @@ const selectWeaponRoutes: Routes = [
     RouterModule
   ]
 })
-export class SelectWeaponRoutingModule {}
+export class SelectArmoryRoutingModule {}

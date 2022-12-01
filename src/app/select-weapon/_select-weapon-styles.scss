@@ -5,11 +5,12 @@ $border-color: rgba(68,96,171,1);
 $border-hover-color: rgba(92,129,229,1);
 $border-width: 8px;
 $weapon-card-padding: 16px;
+$weapon-font-family: 'Courier New', 'sans-serif';
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Courier New', 'sans-serif';
+  font-family: $weapon-font-family;
   font-weight: normal;
   font-size: 20px;
   color: $select-weapon-text-color;

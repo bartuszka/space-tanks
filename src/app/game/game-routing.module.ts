@@ -8,7 +8,7 @@ const gameRoutes: Routes = [
   },
   {
     path: 'select-weapon',
-    loadChildren: () => import('../select-weapon/select-weapon.module').then(m => m.SelectWeaponModule)
+    loadChildren: () => import('../select-weapon/select-armory.module').then(m => m.SelectArmoryModule)
   },
   {
     path: '**',

@@ -1,6 +1,6 @@
 import {Resolve} from "@angular/router";
 import {GameState} from "../models/game-state";
-import {Observable} from "rxjs";
+import {Observable, of, switchMap} from "rxjs";
 import {User} from "../models/user.model";
 import {UserMode} from "../models/user-mode.model";
 import {GameStateService} from "./game-state.service";

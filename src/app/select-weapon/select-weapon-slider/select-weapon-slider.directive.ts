@@ -14,8 +14,19 @@ import {
 })
 export class SelectWeaponSliderDirective implements AfterViewInit {
   @Output() public scrollingStepSet: EventEmitter<number> = new EventEmitter<number>();
-  @Input() public rowsNumber: number;
   @Input() public visibleRowsNumber: number;
+
+  private _rowsNumber: number;
+  private mouseMovingListener: ($event: MouseEvent) => void;
+  private keyboardPressingListener: ($event: KeyboardEvent) => void;
+  private scrollingHeight: number;
+  private stepHeight: number;
+  private currentStep: number = 0;
+
+  @Input() public set rowsNumber(rowsNumber: number) {
+    this._rowsNumber = rowsNumber;
+    this.setStepHeight();
+  };
 
   @Input() public set step(step: number) {
     if (step !== this.currentStep) {
@@ -23,11 +34,9 @@ export class SelectWeaponSliderDirective implements AfterViewInit {
     }
   };
 
-  private mouseMovingListener: ($event: MouseEvent) => void;
-  private keyboardPressingListener: ($event: KeyboardEvent) => void;
-  private scrollingHeight: number;
-  private stepHeight: number;
-  private currentStep: number = 0;
+  public get rowsNumber(): number {
+    return this._rowsNumber;
+  }
 
   constructor(private elRef: ElementRef, private renderer: Renderer2) {};
 

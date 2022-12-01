@@ -1,15 +1,20 @@
-export class Weapon {
-  id: number;
-  name: string;
-  weight: number;
-  range: number;
-  strength: number;
-  appearance: string;
-  spreadSpeed: number;
-  price: number;
-  rollingRange?: number;
-  fluidAmount?: number;
-  detonationStartDistance?: number;
-  bounceNumber?: number;
-  bounceDistance?: number;
+import {ArmoryItem} from "./armory-item.model";
+
+export class Weapon extends ArmoryItem {
+  constructor(
+    id: number,
+    name: string,
+    appearance: string,
+    price: number,
+    public weight: number,
+    public range: number,
+    public strength: number,
+    public spreadSpeed: number,
+    public rollingRange?: number,
+    public fluidAmount?: number,
+    public detonationStartDistance?: number,
+    public bounceNumber?: number,
+    public bounceDistance?: number) {
+    super(id, name, appearance, price);
+  }
 }
