@@ -10,6 +10,10 @@ import {SelectArmoryRoutingModule} from "./select-armory-routing.module";
 import {SelectArmoryComponent} from "./select-armory.component";
 import {VisibleTableItemsPipe} from "./weapon-list/pipes/visible-table-items.pipe";
 import {IsLastUserPipe} from "./weapon-list/pipes/is-last-user.pipe";
+import {WeaponInformationComponent} from './weapon-information/weapon-information.component';
+import {BarChartComponent} from './bar-chart/bar-chart.component';
+import {BarChartLevelDirective} from "./bar-chart/bar-chart-level.directive";
+import {WeaponInformationPiece} from "./weapon-information/wepon-information-piece/weapon-information-piece";
 
 @NgModule({
   imports: [
@@ -24,8 +28,12 @@ import {IsLastUserPipe} from "./weapon-list/pipes/is-last-user.pipe";
     CorneredContainerComponent,
     SelectWeaponSliderComponent,
     SelectWeaponSliderDirective,
+    BarChartLevelDirective,
     VisibleTableItemsPipe,
     IsLastUserPipe,
+    WeaponInformationComponent,
+    BarChartComponent,
+    WeaponInformationPiece,
   ],
   providers: [
     VisibleTableItemsPipe,

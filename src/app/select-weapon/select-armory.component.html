@@ -1,43 +1,49 @@
 <div class="select-weapon-container" *ngIf="activeUsers$ | async as activeUsers">
-  <app-cornered-container *ngIf="activeUser$ | async as activeUser">
-    <app-select-weapon-card>
-      <h2 class="summary-header-line">
-        <span>{{ activeUser.name }}</span>
-        <span>Money left: $ {{ activeUser.money }}</span>
-      </h2>
+  <div class="flex-container-row first-row">
+    <app-cornered-container *ngIf="activeUser$ | async as activeUser">
+      <app-select-weapon-card>
+        <h2 class="summary-header-line">
+          <span>{{ activeUser.name }}</span>
+          <span>Money left: $ {{ activeUser.money }}</span>
+        </h2>
 
-      <div class="flex-container-row content">
-        <div class="table-col">
-          <app-armory-list [tableHeader]="scrollingTableHeader"
-                           [tableItems]="scrollingTableItems$ | async"
-                           (valueChanged)="resetTableSelection($event)"
-                           (itemSelected)="this.selectedItemId = $event">
-          </app-armory-list>
-        </div>
-
-        <div *ngIf="armoryMode$ | async as armoryMode"
-             class="flex-container-col buttons-col">
-
-          <app-select-weapon-button [label]="armoryMode === armoryModes.WEAPON ? 'Shields' : 'Weapons'"
-                                    (click)="toggleArmoryMode()">
-          </app-select-weapon-button>
-
-          <div>
-            <app-select-weapon-button class="half-width"
-                                      label="Buy"
-                                      (click)="addArmory(activeUser)">
-            </app-select-weapon-button>
-            <app-select-weapon-button class="half-width"
-                                      label="Sell"
-                                      (click)="subtractArmory(activeUser)">
-            </app-select-weapon-button>
+        <div class="flex-container-row content">
+          <div class="table-col">
+            <app-armory-list [tableHeader]="scrollingTableHeader"
+                             [tableItems]="scrollingTableItems$ | async"
+                             (valueChanged)="resetTableSelection($event)"
+                             (itemSelected)="this.setSelectedArmory($event)">
+            </app-armory-list>
           </div>
 
-          <app-select-weapon-button [label]="'Done' | isLastUser: activeUsers: activeUser"
-                                    (click)="goToNextUser(activeUsers, activeUser)">
-          </app-select-weapon-button>
+          <div *ngIf="armoryMode$ | async as armoryMode"
+               class="flex-container-col buttons-col">
+
+            <app-select-weapon-button [label]="armoryMode === armoryModes.WEAPON ? 'Shields' : 'Weapons'"
+                                      (click)="toggleArmoryMode()">
+            </app-select-weapon-button>
+
+            <div>
+              <app-select-weapon-button class="half-width"
+                                        label="Buy"
+                                        (click)="addArmory(activeUser)">
+              </app-select-weapon-button>
+              <app-select-weapon-button class="half-width"
+                                        label="Sell"
+                                        (click)="subtractArmory(activeUser)">
+              </app-select-weapon-button>
+            </div>
+
+            <app-select-weapon-button [label]="'Done' | isLastUser: activeUsers: activeUser"
+                                      (click)="goToNextUser(activeUsers, activeUser)">
+            </app-select-weapon-button>
+          </div>
         </div>
-      </div>
-    </app-select-weapon-card>
-  </app-cornered-container>
+      </app-select-weapon-card>
+    </app-cornered-container>
+
+    <div *ngIf="activeUser$ | async as activeUser" class="appearance-container">
+      <app-weapon-information [armoryItem]="selectedArmory"></app-weapon-information>
+    </div>
+  </div>
 </div>

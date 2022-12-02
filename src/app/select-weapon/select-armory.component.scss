@@ -7,43 +7,60 @@
 }
 
 .select-weapon-container {
+  padding-top: 30px;
   position: relative;
   height: 100vh;
   width: 100%;
   background-position-x: center;
   background-image: url("/assets/images/backgrounds/select-weapon.jpg");
 
-  app-cornered-container {
-    display: inline-block;
+  .first-row {
+    align-items: stretch;
+    justify-content: center;
 
-    app-select-weapon-card {
-      .content {
-        padding: 20px;
-      }
+    app-cornered-container {
+      display: inline-block;
 
-      .summary-header-line {
-        display: flex;
-        justify-content: space-between;
-        padding-bottom: 15px;
-        border-bottom: solid $select-weapon-text-color 1px;
-      }
+      app-select-weapon-card {
+        height: 100%;
 
-      .table-col {
-        width: 650px;
-      }
+        .content {
+          padding: 20px;
+        }
 
-      .buttons-col {
-        justify-content: space-between;
-        width: 150px;
-        padding-left: 20px;
+        .summary-header-line {
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 15px;
+          border-bottom: solid $select-weapon-text-color 1px;
+        }
 
-        app-select-weapon-button {
-          width: 100%;
+        .table-col {
+          width: 650px;
+        }
 
-          &.half-width {
-            width: 50%;
+        .buttons-col {
+          justify-content: space-between;
+          width: 150px;
+          padding-left: 20px;
+
+          app-select-weapon-button {
+            width: 100%;
+
+            &.half-width {
+              width: 50%;
+            }
           }
         }
+      }
+    }
+
+    .appearance-container {
+      margin-left: 50px;
+      width: 300px;
+
+      app-weapon-information {
+        height: 100%;
       }
     }
   }

@@ -1,4 +1,6 @@
-<div class="weapon-card-container">
+<div class="weapon-card-container"
+     [class.blue]="colorMode === colorModes.BLUE"
+     [class.violet]="colorMode === colorModes.VIOLET">
   <div class="corner corner-top-left"></div>
   <div class="corner corner-top-right"></div>
   <div class="corner corner-bottom-left"></div>

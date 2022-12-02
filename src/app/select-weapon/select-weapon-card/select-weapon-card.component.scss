@@ -6,8 +6,16 @@
 
 .weapon-card-container {
   @include corners;
+  height: inherit;
   box-sizing: border-box;
   position: relative;
   padding: $weapon-card-padding;
-  background-color: $background-color-violet;
+
+  &.blue {
+    background-color: $background-color-blue;
+  }
+
+  &.violet {
+    background-color: $background-color-violet;
+  }
 }

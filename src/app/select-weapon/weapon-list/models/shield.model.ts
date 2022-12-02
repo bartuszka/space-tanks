@@ -1,9 +1,9 @@
 import {ArmoryItem} from "./armory-item.model";
 
 export enum ShieldLevel {
-  FIRST = 'FIRST',
-  SECOND = 'SECOND',
-  THIRD = 'THIRD'
+  FIRST = 1,
+  SECOND = 2,
+  THIRD = 3
 }
 
 export class Shield extends ArmoryItem {
@@ -12,7 +12,8 @@ export class Shield extends ArmoryItem {
     name: string,
     appearance: string,
     price: number,
+    description: string,
     public level: ShieldLevel) {
-    super(id, name, appearance, price);
+    super(id, name, appearance, price, description);
   }
 }

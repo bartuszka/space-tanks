@@ -1,0 +1,17 @@
+@import "../../select-weapon-styles";
+
+:host {
+  display: block;
+}
+
+.info-row {
+  justify-content: space-between;
+}
+
+.tiny-font {
+  font-size: 14px;
+
+  * {
+    font-size: 14px;
+  }
+}

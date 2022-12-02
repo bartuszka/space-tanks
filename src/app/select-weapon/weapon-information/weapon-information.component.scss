@@ -1,0 +1,48 @@
+@import "../select-weapon-styles";
+
+:host {
+  height: inherit;
+  width: inherit;
+
+  app-select-weapon-card {
+    height: inherit;
+    width: inherit;
+
+    h2 {
+      text-align: center;
+      padding-bottom: 10px;
+    }
+
+    h3 {
+      margin-top: 20px;
+    }
+
+    img {
+      max-width: 100%;
+      mix-blend-mode: hard-light;
+      display: block;
+      margin: 0 auto;
+
+      &.smaller-height {
+        max-height: 70px;
+      }
+
+      &.greater-height {
+        max-height: 176px;
+      }
+    }
+
+    app-bar-chart {
+      margin-top: 20px;
+    }
+
+    .item-description {
+      margin-top: 20px;
+    }
+
+    .info-container {
+      margin-top: 20px;
+    }
+  }
+}
+

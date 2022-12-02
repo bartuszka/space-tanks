@@ -39,14 +39,17 @@ export class GameStateService {
   }
 
   public addArmory(user: User, armoryItem: ArmoryItem): void {
-    const updatedUser: User = { ...user };
-    const armoryArray: (UserWeapon | UserShield)[] = armoryItem instanceof Weapon ? user.weapons : user.shields;
-    const existingUserArmoryIndex: number =
-      armoryArray.findIndex((weapon: UserArmory) => weapon.item.id === armoryItem.id);
+    if (user.money - armoryItem.price >= 0) {
+      const updatedUser: User = {...user};
+      const armoryArray: (UserWeapon | UserShield)[] = armoryItem instanceof Weapon ? user.weapons : user.shields;
+      const existingUserArmoryIndex: number =
+        armoryArray.findIndex((weapon: UserArmory) => weapon.item.id === armoryItem.id);
+      updatedUser.money -= armoryItem.price;
 
-    existingUserArmoryIndex !== -1 ? armoryArray[existingUserArmoryIndex].quantity++ :
-      armoryArray.push(this.createUserItem(armoryItem));
-    this.setUser(updatedUser);
+      existingUserArmoryIndex !== -1 ? armoryArray[existingUserArmoryIndex].quantity++ :
+        armoryArray.push(this.createUserItem(armoryItem));
+      this.setUser(updatedUser);
+    }
   }
 
   public subtractArmory(user: User, armoryItem: ArmoryItem): void {
@@ -57,6 +60,7 @@ export class GameStateService {
 
     if (existingUserArmoryIndex !== -1 && armoryArray[existingUserArmoryIndex].quantity > 0) {
       armoryArray[existingUserArmoryIndex].quantity--;
+      updatedUser.money += armoryItem.price;
     }
     this.setUser(updatedUser);
   }

@@ -1,0 +1,39 @@
+@import "../select-weapon-styles";
+
+:host {
+  display: block;
+}
+
+.bar-char-container {
+  .feature {
+    .feature-row {
+      width: 100%;
+      margin-bottom: 2px;
+      align-items: center;
+
+      .feature-name, .feature-bar {
+        width: 50%;
+        font-size: 16px;
+      }
+
+      .feature-bar {
+        box-sizing: border-box;
+        height: 10px;
+        border-right: solid $select-weapon-text-color 2px;
+
+        .inner-bar {
+          box-sizing: border-box;
+          width: 0;
+          height: 100%;
+          background-color: rgba(255,255,255,.5);
+          border-right: solid $select-weapon-text-color 3px;
+          transition: all .5s ease-out;
+
+          &.violet {
+            background-color: $violet-chart-color;
+          }
+        }
+      }
+    }
+  }
+}

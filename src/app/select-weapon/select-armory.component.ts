@@ -30,7 +30,7 @@ export class SelectArmoryComponent extends Destroyable implements OnInit {
 
   public scrollingTableHeader: ScrollingTableHeader;
   public armoryModes: typeof ArmoryMode = ArmoryMode;
-  public selectedItemId: number;
+  public selectedArmory: ArmoryItem;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -63,11 +63,17 @@ export class SelectArmoryComponent extends Destroyable implements OnInit {
   }
 
   public addArmory(activeUser: User): void {
-    this.gameStateService.addArmory(activeUser, this.armoryStateService.getArmoryItemById(this.selectedItemId));
+    this.gameStateService.addArmory(activeUser, this.armoryStateService.getArmoryItemById(this.selectedArmory.id));
   }
 
   public subtractArmory(activeUser: User): void {
-    this.gameStateService.subtractArmory(activeUser, this.armoryStateService.getArmoryItemById(this.selectedItemId));
+    this.gameStateService.subtractArmory(activeUser, this.armoryStateService.getArmoryItemById(this.selectedArmory.id));
+  }
+
+  public setSelectedArmory(armoryId: number): void {
+    if (this.selectedArmory?.id !== armoryId) {
+      this.selectedArmory = this.armoryStateService.getArmoryItemById(armoryId);
+    }
   }
 
   public goToNextUser(activeUsers: User[], activeUser: User): void {

@@ -1,0 +1,15 @@
+<div class="bar-char-container">
+  <div *ngFor="let barChartItem of barChartData; let i = index" class="flex-container-row feature">
+    <div class="flex-container-row feature-row">
+      <div class="feature-name">{{ barChartItem.featureName }}</div>
+      <div class="feature-bar">
+        <div class="inner-bar"
+             [class.violet]="i % 2 === 1"
+             appBarCHartLevel
+             [barValue]="barChartItem.featureValue"
+             [barMaxValue]="barChartItem.featureMaxValue">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

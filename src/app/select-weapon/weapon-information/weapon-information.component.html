@@ -1,0 +1,37 @@
+<app-select-weapon-card *ngIf="barChartData$ | async as barChartData"
+                        class="flex-container-col"
+                        [colorMode]="colorModes.VIOLET">
+  <div>
+    <h2>{{ armoryItem.name }}</h2>
+
+    <img [ngClass]="{ 'smaller-height': isWeapon(), 'greater-height': !isWeapon() }"
+         [src]="armoryItem.appearance"
+         alt="selected armory">
+
+    <app-bar-chart [barChartData]="barChartData"></app-bar-chart>
+  </div>
+
+  <div>
+    <app-weapon-information-piece class="item-description"
+                                  [content]="armoryItem.description">
+    </app-weapon-information-piece>
+
+    <div *ngIf="isWeapon()" class="info-container">
+      <app-weapon-information-piece [content]="getArmoryItemAsWeapon().rollingRange"
+                                    label="Rolling range:">
+      </app-weapon-information-piece>
+      <app-weapon-information-piece [content]="getArmoryItemAsWeapon().bounceDistance"
+                                    label="Bouncing distance:">
+      </app-weapon-information-piece>
+      <app-weapon-information-piece [content]="getArmoryItemAsWeapon().bounceNumber"
+                                    label="Bouncing number:">
+      </app-weapon-information-piece>
+      <app-weapon-information-piece [content]="getArmoryItemAsWeapon().fluidAmount"
+                                    label="Fluid amount:">
+      </app-weapon-information-piece>
+      <app-weapon-information-piece [content]="getArmoryItemAsWeapon().detonationStartDistance"
+                                    label="Detonation distance:">
+      </app-weapon-information-piece>
+    </div>
+  </div>
+</app-select-weapon-card>

@@ -1,37 +1,37 @@
 <div class="weapon-list-container">
-      <div class="flex-container-row">
-        <div class="table-col">
-          <table>
-            <thead>
-            <tr class="titles-header-line">
-              <td class="name-cell">{{ tableHeader.firstColumnHeaderContent }}</td>
-              <td class="price-cell">{{ tableHeader.secondColumnHeaderContent }}</td>
-              <td class="quantity-cell">{{ tableHeader.thirdColumnHeaderContent }}</td>
-            </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let tableItem of tableItems | visibleTableItems: visibleItemsNumber: sliderCurrentStep"
-                  [class.selected]="this.selectedItem.id === tableItem.id">
-                <td class="name-cell">{{ tableItem.firstColumnContent }}</td>
-                <td class="price-cell">{{ tableItem.secondColumnContent }}</td>
-                <td class="quantity-cell">{{ tableItem.thirdColumnContent }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="slider-col">
-          <app-select-weapon-slider [rowsNumber]="tableItems.length"
-                                    [visibleRowsNumber]="visibleItemsNumber"
-                                    [step]="sliderCurrentStep"
-                                    (scrollingStepChanged)="scrollListToItem($event)">
-          </app-select-weapon-slider>
-        </div>
-        <div class="flex-container-col buttons-col">
-          <app-select-weapon-button label="Top" (click)="scrollListToItem(0)"></app-select-weapon-button>
-          <app-select-weapon-button class="arrow-up" (click)="scrollListUp()"></app-select-weapon-button>
-          <app-select-weapon-button class="arrow-down" (click)="scrollListDown()"></app-select-weapon-button>
-          <app-select-weapon-button label="End" (click)="scrollListToItem(lastScrollingStep)">
-          </app-select-weapon-button>
-        </div>
-      </div>
+  <div class="flex-container-row">
+    <div class="table-col">
+      <table>
+        <thead>
+        <tr class="titles-header-line">
+          <td class="name-cell">{{ tableHeader.firstColumnHeaderContent }}</td>
+          <td class="price-cell">{{ tableHeader.secondColumnHeaderContent }}</td>
+          <td class="quantity-cell">{{ tableHeader.thirdColumnHeaderContent }}</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let tableItem of tableItems | visibleTableItems: visibleItemsNumber: sliderCurrentStep"
+            [class.selected]="this.selectedItem.id === tableItem.id">
+          <td class="name-cell">{{ tableItem.firstColumnContent }}</td>
+          <td class="price-cell">{{ tableItem.secondColumnContent }}</td>
+          <td class="quantity-cell">{{ tableItem.thirdColumnContent }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="slider-col">
+      <app-select-weapon-slider [rowsNumber]="tableItems.length"
+                                [visibleRowsNumber]="visibleItemsNumber"
+                                [step]="sliderCurrentStep"
+                                (scrollingStepChanged)="scrollListToItem($event)">
+      </app-select-weapon-slider>
+    </div>
+    <div class="flex-container-col buttons-col">
+      <app-select-weapon-button label="Top" (click)="scrollListToItem(0)"></app-select-weapon-button>
+      <app-select-weapon-button class="arrow-up" (click)="scrollListUp()"></app-select-weapon-button>
+      <app-select-weapon-button class="arrow-down" (click)="scrollListDown()"></app-select-weapon-button>
+      <app-select-weapon-button label="End" (click)="scrollListToItem(lastScrollingStep)">
+      </app-select-weapon-button>
+    </div>
+  </div>
 </div>

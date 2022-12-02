@@ -3,5 +3,6 @@ export class ArmoryItem {
     public id: number,
     public name: string,
     public appearance: string,
-    public price: number) {}
+    public price: number,
+    public description: string) {}
 }

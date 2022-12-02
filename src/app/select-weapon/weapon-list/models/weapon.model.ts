@@ -6,6 +6,7 @@ export class Weapon extends ArmoryItem {
     name: string,
     appearance: string,
     price: number,
+    description: string,
     public weight: number,
     public range: number,
     public strength: number,
@@ -15,6 +16,6 @@ export class Weapon extends ArmoryItem {
     public detonationStartDistance?: number,
     public bounceNumber?: number,
     public bounceDistance?: number) {
-    super(id, name, appearance, price);
+    super(id, name, appearance, price, description);
   }
 }
