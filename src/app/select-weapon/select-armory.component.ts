@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {
+  map,
   Observable,
   takeUntil,
 } from "rxjs";
@@ -15,6 +16,9 @@ import {Destroyable} from "../components/destroyable.component";
 import {SelectArmoryStateService} from "./weapon-list/services/select-armory-state.service";
 import {ArmoryListService} from "./weapon-list/services/armory-list.service";
 import {headerInitialData} from "./weapon-list/models/heaer-initial-data.model";
+import {ArmoryBarChartData} from "./weapon-list/models/armory-bar-chart.model";
+import {createUserChartData} from "./weapon-list/functions/create-user-chart-data";
+import {ArmoryChartStyle} from "./weapon-list/models/armory-chart-style.model";
 
 @Component({
   selector: 'app-select-armory',
@@ -27,10 +31,13 @@ export class SelectArmoryComponent extends Destroyable implements OnInit {
   public scrollingTableItems$: Observable<ScrollingTableItem[]>;
   public armoryItems$: Observable<ArmoryItem[]>;
   public activeUser$: Observable<User>;
+  public weaponPercentage$: Observable<number>;
 
   public scrollingTableHeader: ScrollingTableHeader;
   public armoryModes: typeof ArmoryMode = ArmoryMode;
   public selectedArmory: ArmoryItem;
+  public userChartData: ArmoryBarChartData[] = createUserChartData();
+  public userChartStyles: typeof ArmoryChartStyle = ArmoryChartStyle;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -48,6 +55,7 @@ export class SelectArmoryComponent extends Destroyable implements OnInit {
     this.armoryItems$ = this.armoryListService.armoryItems$;
     this.scrollingTableItems$ = this.armoryListService.scrollingTableItems$;
     this.scrollingTableHeader = headerInitialData;
+    this.weaponPercentage$ = this.armoryListService.weaponPercentage$;
     this.setResetTableSelectStream();
     this.setRouteParamsStream();
   }

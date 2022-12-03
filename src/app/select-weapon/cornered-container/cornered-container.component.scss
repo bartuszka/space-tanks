@@ -7,12 +7,15 @@
   padding: 20px;
   background: transparent;
   border: $border-width solid transparent;
-  border-image: url('/assets/images/backgrounds/border-square-ok.png') 15 repeat;
   @include corners(-7px);
 
+  &.dotted-border {
+    border-image: url('/assets/images/backgrounds/border-square-ok.png') 15 repeat;
+  }
+
   .border {
-    width: 15px;
-    height: 15px;
+    width: 25px;
+    height: 25px;
     position: absolute;
     pointer-events: none;
   }

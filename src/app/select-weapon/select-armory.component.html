@@ -1,3 +1,4 @@
+<div class="background"></div>
 <div class="select-weapon-container" *ngIf="activeUsers$ | async as activeUsers">
   <div class="flex-container-row first-row">
     <app-cornered-container *ngIf="activeUser$ | async as activeUser">
@@ -45,5 +46,36 @@
     <div *ngIf="activeUser$ | async as activeUser" class="appearance-container">
       <app-weapon-information [armoryItem]="selectedArmory"></app-weapon-information>
     </div>
+  </div>
+
+  <div *ngIf="(weaponPercentage$ | async) !== null" class="flex-container-row second-row">
+    <div class="circle-charts-container">
+      <app-cornered-container [dottedBorder]="false" >
+        <app-circle-chart [percentageValue]="(weaponPercentage$ | async)"
+                          label="Attack"></app-circle-chart>
+      </app-cornered-container>
+
+      <app-cornered-container [dottedBorder]="false">
+        <app-circle-chart [percentageValue]="100 - (weaponPercentage$ | async)"
+                          label="Defence"></app-circle-chart>
+      </app-cornered-container>
+    </div>
+
+    <app-cornered-container class="user-chart-container" [dottedBorder]="false">
+      <div>
+        <app-bar-chart [barChartData]="userChartData"
+                       [barChartStyle]="userChartStyles.TRANSPARENT"></app-bar-chart>
+      </div>
+    </app-cornered-container>
+  </div>
+
+  <div class="flex-container-row third-row">
+    <app-cornered-container [dottedBorder]="false">
+      <app-linear-chart></app-linear-chart>
+    </app-cornered-container>
+
+    <!--<app-cornered-container>
+      <app-linear-chart></app-linear-chart>
+    </app-cornered-container>-->
   </div>
 </div>

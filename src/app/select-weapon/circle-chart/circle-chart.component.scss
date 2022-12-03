@@ -1,0 +1,70 @@
+@import "../select-weapon-styles";
+
+$chart-size: 150px;
+$stroke-width: 10px;
+$stroke-length: 440px;
+$chart-full-size: calc(#{$chart-size} + #{$stroke-width} / 2);
+$percent-label-font-size: 24px;
+
+@mixin draw-circle($fill-color: none, $stroke-color: none, $stroke-size: none) {
+  fill: $fill-color;
+  stroke: $stroke-color;
+  stroke-width: $stroke-size;
+  transform: translate(calc(#{$stroke-width} / 2), calc(#{$stroke-width} / 2));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  width: inherit;
+  height: inherit;
+}
+
+.circle-container {
+  // Stroke is created half outside and half inside
+  position: relative;
+  width: $chart-full-size;
+  height: $chart-full-size;
+
+  .labels {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: $percent-label-font-size;
+    text-align: center;
+
+    .title-label {
+      font-size: 16px;
+    }
+  }
+
+  svg {
+    width: $chart-full-size;
+    height: $chart-full-size;
+    transform: rotate(270deg);
+
+    .outer-circle {
+      @include draw-circle(none, $blue-chart-color, $stroke-width);
+      stroke-dasharray: $stroke-length;
+      transition: all .5s ease-out;
+    }
+
+    .inner-circle {
+      @include draw-circle($blue-chart-color);
+      opacity: .4;
+    }
+
+    .inner-circle-piece {
+      @include draw-circle(none, $select-weapon-text-color, 7px);
+      stroke-dasharray: 365px;
+      stroke-dashoffset: 270px;
+    }
+
+    .inner-circle-outline {
+      @include draw-circle(none, $blue-chart-color, 1px);
+    }
+  }
+}

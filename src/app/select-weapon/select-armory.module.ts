@@ -14,6 +14,9 @@ import {WeaponInformationComponent} from './weapon-information/weapon-informatio
 import {BarChartComponent} from './bar-chart/bar-chart.component';
 import {BarChartLevelDirective} from "./bar-chart/bar-chart-level.directive";
 import {WeaponInformationPiece} from "./weapon-information/wepon-information-piece/weapon-information-piece";
+import { CircleChartComponent } from './circle-chart/circle-chart.component';
+import {CircleChartDirective} from "./circle-chart/circle-chart-directive";
+import { LinearChartComponent } from './linear-chart/linear-chart.component';
 
 @NgModule({
   imports: [
@@ -27,13 +30,16 @@ import {WeaponInformationPiece} from "./weapon-information/wepon-information-pie
     SelectWeaponButtonComponent,
     CorneredContainerComponent,
     SelectWeaponSliderComponent,
-    SelectWeaponSliderDirective,
-    BarChartLevelDirective,
     VisibleTableItemsPipe,
     IsLastUserPipe,
     WeaponInformationComponent,
     BarChartComponent,
     WeaponInformationPiece,
+    CircleChartComponent,
+    SelectWeaponSliderDirective,
+    BarChartLevelDirective,
+    CircleChartDirective,
+    LinearChartComponent,
   ],
   providers: [
     VisibleTableItemsPipe,

@@ -20,9 +20,13 @@ import {ArmoryMode} from "../models/armory-mode.model";
 import {ArmoryItem} from "../models/armory-item.model";
 import {UserArmory} from "../../../models/user-armory.model";
 import {ScrollingTableItem} from "../models/scrolling-table-item.model";
+import {UserWeapon} from "../../../models/user-weapon.model";
+import {UserShield} from "../../../models/user-shield.model";
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ArmoryListService  {
   public params$: Observable<Params>;
   public activeUsers$: Observable<User[]>;
@@ -32,6 +36,7 @@ export class ArmoryListService  {
   public scrollingTableItems$: Observable<ScrollingTableItem[]>;
   public tableValueChanged$: Observable<ScrollingTableItem[]>;
   public resetTableSelect$: Observable<boolean>;
+  public weaponPercentage$: Observable<number>;
 
   private paramsSubject$: Subject<Params>;
   private tableValueChangedSubject$: Subject<ScrollingTableItem[]>;
@@ -48,6 +53,7 @@ export class ArmoryListService  {
     this.setArmoryItemsStream();
     this.setScrollingTableItemsStream();
     this.setResetTableSelectStream();
+    this.setWeaponPercentageStream();
   }
 
   public setParams(params: Params): void {
@@ -114,5 +120,22 @@ export class ArmoryListService  {
       secondColumnContent: '$ ' + (!!foundUserArmory ? foundUserArmory.item.price : visibleArmory.price),
       thirdColumnContent: !!foundUserArmory ? foundUserArmory.quantity : 0
     }
+  }
+
+  private setWeaponPercentageStream(): void {
+    this.weaponPercentage$ = this.activeUser$.pipe(
+      map((user: User) => {
+        const weaponExpenses: number = user.weapons
+          .map((weapon: UserWeapon) => weapon.item.price * weapon.quantity)
+          .reduce((accumulator: number, currentWeaponExpenses: number) => accumulator + currentWeaponExpenses);
+
+        const shieldExpenses: number = user.shields
+          .map((shield: UserShield) => shield.item.price * shield.quantity)
+          .reduce((accumulator: number, currentShieldExpenses: number) => accumulator + currentShieldExpenses);
+
+        const weaponPercentage: number = Math.ceil(weaponExpenses / (shieldExpenses + weaponExpenses) * 100);
+        return isNaN(weaponPercentage) ? 50 : Math.floor(weaponExpenses / (shieldExpenses + weaponExpenses) * 100);
+      })
+    );
   }
 }

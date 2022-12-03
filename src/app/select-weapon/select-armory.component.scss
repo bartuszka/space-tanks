@@ -1,23 +1,46 @@
 @import "./select-weapon-styles";
 
+:host {
+  position: relative;
+  height: 100vh;
+}
+
 * {
   ::ng-deep {
     font-family: $weapon-font-family;
   }
 }
 
-.select-weapon-container {
-  padding-top: 30px;
-  position: relative;
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100vh;
   width: 100%;
-  background-position-x: center;
   background-image: url("/assets/images/backgrounds/select-weapon.jpg");
+}
+
+.select-weapon-container {
+  top: 50%;
+  transform: translate(0, -50%);
+  margin: 0 auto;
+  box-sizing: border-box;
+  position: relative;
+  width: 1300px;
+  background-position-x: center;
+
+  .first-row, .second-row {
+    .circle-charts-container {
+      display: flex;
+      gap: 50px;
+    }
+
+    justify-content: space-between;
+    margin-bottom: 40px;
+    align-items: stretch;
+  }
 
   .first-row {
-    align-items: stretch;
-    justify-content: center;
-
     app-cornered-container {
       display: inline-block;
 
@@ -61,6 +84,38 @@
 
       app-weapon-information {
         height: 100%;
+      }
+    }
+  }
+
+  .second-row {
+    gap: 50px;
+
+    .user-chart-container {
+      min-width: 600px;
+
+      div {
+        position: relative;
+        height: 100%;
+
+        app-bar-chart {
+          position: absolute;
+          width: 100%;
+          top: 50%;
+          transform: translate(0, -50%);
+        }
+      }
+    }
+  }
+
+  .third-row {
+    width: 100%;
+    gap: 50px;
+    app-cornered-container {
+      width: 50%;
+      app-linear-chart {
+        width: 100%;
+        height: 100px;
       }
     }
   }

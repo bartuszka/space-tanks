@@ -13,24 +13,33 @@
 
       .feature-name, .feature-bar {
         width: 50%;
-        font-size: 16px;
+        font-size: 18px;
       }
 
       .feature-bar {
         box-sizing: border-box;
-        height: 10px;
+        height: 15px;
         border-right: solid $select-weapon-text-color 2px;
 
         .inner-bar {
           box-sizing: border-box;
           width: 0;
           height: 100%;
-          background-color: rgba(255,255,255,.5);
           border-right: solid $select-weapon-text-color 3px;
-          transition: all .5s ease-out;
+          transition: width .5s ease-out;
 
           &.violet {
             background-color: $violet-chart-color;
+          }
+
+          &.blue {
+            background-color: $blue-chart-color;
+          }
+
+          &.transparent {
+            background-color: transparent;
+            border: solid $blue-chart-color 2px;
+            border-right: solid white 5px;
           }
         }
       }

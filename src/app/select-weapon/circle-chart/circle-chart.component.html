@@ -1,0 +1,30 @@
+<div class="circle-container">
+  <div class="labels">
+    <div>{{ percentageValue }}%</div>
+    <div *ngIf="label" class="title-label">{{ label }}</div>
+  </div>
+  <svg>
+    <circle class="inner-circle"
+            r="40"
+            cx="70"
+            cy="70">
+    </circle>
+    <circle class="inner-circle-outline"
+            r="50"
+            cx="70"
+            cy="70">
+    </circle>
+    <circle class="inner-circle-piece"
+            r="58"
+            cx="70"
+            cy="70">
+    </circle>
+    <circle class="outer-circle"
+            appCircleChart
+            [circleLength]="440"
+            [percentageValue]="percentageValue"
+            r="70"
+            cx="70"
+            cy="70"></circle>
+  </svg>
+</div>

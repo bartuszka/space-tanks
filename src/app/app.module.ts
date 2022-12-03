@@ -9,7 +9,7 @@ import { CustomFormField } from "./models/custom-form-field";
 import { Destroyable } from "./components/destroyable.component";
 import { SelectWeaponResolver } from "./select-weapon/weapon-list/services/select-weapon.resolver";
 import { SelectArmoryStateService } from "./select-weapon/weapon-list/services/select-armory-state.service";
-import {ArmoryListService} from "./select-weapon/weapon-list/services/armory-list.service";
+import { ArmoryListService } from "./select-weapon/weapon-list/services/armory-list.service";
 
 @NgModule({
   declarations: [

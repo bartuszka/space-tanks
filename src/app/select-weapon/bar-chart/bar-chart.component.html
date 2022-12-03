@@ -4,7 +4,9 @@
       <div class="feature-name">{{ barChartItem.featureName }}</div>
       <div class="feature-bar">
         <div class="inner-bar"
-             [class.violet]="i % 2 === 1"
+             [ngClass]="{ violet: i % 2 === 1 && barChartStyle !== barChartStyles.TRANSPARENT,
+                          blue: i % 2 === 0 && barChartStyle !== barChartStyles.TRANSPARENT,
+                          transparent: barChartStyle === barChartStyles.TRANSPARENT }"
              appBarCHartLevel
              [barValue]="barChartItem.featureValue"
              [barMaxValue]="barChartItem.featureMaxValue">
