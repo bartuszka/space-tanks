@@ -1,0 +1,18 @@
+@import "../select-weapon-styles";
+
+.bit-numbers-container {
+  justify-content: space-between;
+  letter-spacing: 7px;
+  gap: 15px;
+
+  &.vertical {
+    flex-direction: column;
+  }
+
+  .point {
+    width: 6px;
+    height: 6px;
+    display: inline-block;
+    margin-left: 12px;
+  }
+}

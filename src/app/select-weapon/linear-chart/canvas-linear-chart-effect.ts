@@ -43,6 +43,7 @@ export class CanvasLinearChartEffect {
   private readonly fps: number;
   private pointsNumber: number = 60;
   private oldFpsDifference: number = 0;
+  private animationNumber: number;
 
   constructor(renderer: Renderer2, canvas: HTMLCanvasElement, containerElement: HTMLElement) {
     this.canvas = canvas;
@@ -58,7 +59,11 @@ export class CanvasLinearChartEffect {
     this.animate();
   }
 
-  private drawRandomPoints(currentTimerFps: number): void {
+  public stopAnimation(): void {
+    window.cancelAnimationFrame(this.animationNumber);
+  }
+
+  private drawRandomPoints = (currentTimerFps: number): void => {
    if (currentTimerFps - this.oldFpsDifference > 1000 / this.fps) {
       this.oldFpsDifference = currentTimerFps;
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
@@ -80,7 +85,7 @@ export class CanvasLinearChartEffect {
     }
 
    this.chartStripe.draw();
-   window.requestAnimationFrame(this.drawRandomPoints.bind(this));
+   this.animationNumber = window.requestAnimationFrame(this.drawRandomPoints);
   }
 
   private animate(): void {

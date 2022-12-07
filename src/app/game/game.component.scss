@@ -1,0 +1,8 @@
+.router-outlet {
+  ::ng-deep {
+    & > * {
+      position: absolute;
+      width: 100%;
+    }
+  }
+}

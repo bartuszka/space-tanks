@@ -1,14 +1,8 @@
 @import "./select-weapon-styles";
 
 :host {
-  position: relative;
   height: 100vh;
-}
-
-* {
-  ::ng-deep {
-    font-family: $weapon-font-family;
-  }
+  overflow: hidden;
 }
 
 .background {
@@ -24,20 +18,60 @@
   top: 50%;
   transform: translate(0, -50%);
   margin: 0 auto;
-  box-sizing: border-box;
   position: relative;
   width: 1300px;
   background-position-x: center;
 
+  .left-side-effects, .right-side-effects, .bottom-effects, .top-effects{
+    position: absolute;
+  }
+
+  .left-side-effects, .right-side-effects{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+
+  .left-side-effects {
+    left: -200px;
+  }
+
+  .top-effects {
+    top: -120px;
+  }
+
+  .bottom-effects {
+    bottom: -70px;
+  }
+
+  .right-side-effects {
+    right: -200px;
+    align-items: flex-end;
+
+    .cards-and-numbers {
+      display: flex;
+      gap: 30px;
+
+      .empty-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+    }
+  }
+
   .first-row, .second-row {
+    justify-content: space-between;
+    margin-bottom: 40px;
+    align-items: stretch;
+
     .circle-charts-container {
       display: flex;
       gap: 50px;
     }
-
-    justify-content: space-between;
-    margin-bottom: 40px;
-    align-items: stretch;
   }
 
   .first-row {
@@ -111,6 +145,7 @@
   .third-row {
     width: 100%;
     gap: 50px;
+
     app-cornered-container {
       width: 50%;
       app-linear-chart {

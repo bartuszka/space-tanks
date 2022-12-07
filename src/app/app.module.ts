@@ -10,6 +10,7 @@ import { Destroyable } from "./components/destroyable.component";
 import { SelectWeaponResolver } from "./select-weapon/weapon-list/services/select-weapon.resolver";
 import { SelectArmoryStateService } from "./select-weapon/weapon-list/services/select-armory-state.service";
 import { ArmoryListService } from "./select-weapon/weapon-list/services/armory-list.service";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ArmoryListService } from "./select-weapon/weapon-list/services/armory-l
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     SelectArmoryStateService,

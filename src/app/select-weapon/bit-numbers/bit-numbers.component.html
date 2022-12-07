@@ -1,0 +1,20 @@
+<div class="bit-numbers-container flex-container-row"
+     [class.vertical]="orientation === bitNumbersOrientations.VERTICAL">
+
+  <div *ngFor="let _ of bitSegments | arrayFromNumber">
+    <div *ngFor="let _ of bitRows | arrayFromNumber">
+      <ng-container *ngIf="mode === bitNumberModes.NUMBERS; else pointsMode">
+        <span *ngFor="let colValue of bitCols | arrayFromNumber
+                                              | bitArrayFromValue: mode: interval">{{ colValue }}</span>
+      </ng-container>
+
+      <ng-template #pointsMode>
+        <div *ngFor="let colValue of bitCols | arrayFromNumber | bitArrayFromValue: mode: interval"
+             class="point"
+             bitPointColor
+             [colorNumber]="colValue">
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

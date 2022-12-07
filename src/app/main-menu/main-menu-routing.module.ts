@@ -6,7 +6,7 @@ const mainMenuRoutes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: MainMenuComponent
+    component: MainMenuComponent,
   }
 ];
 

@@ -3,15 +3,16 @@ import {Renderer2} from "@angular/core";
 
 export class TrianglesEffect {
   private renderer: Renderer2;
-  private canvas: HTMLCanvasElement;
+  private readonly canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
   private component: HTMLElement;
-  private triangleWidth: number;
+  private readonly triangleWidth: number;
   private triangleHeight: number;
   private mouse: Mouse;
-  private triangleColor: number[] = [128, 0, 0, 1];
-  private minDistance: number;
-  private maxDistance: number;
+  private readonly triangleColor: number[] = [128, 0, 0, 1];
+  private readonly minDistance: number;
+  private readonly maxDistance: number;
+  private animationNumber: number;
 
   constructor(renderer: Renderer2,
               canvas: HTMLCanvasElement,
@@ -37,6 +38,10 @@ export class TrianglesEffect {
     this.triangleHeight = Math.sqrt(Math.pow(this.triangleWidth, 2) - Math.pow(this.triangleWidth / 2, 2));
     this.drawTriangles();
     this.setTrianglesListener();
+  }
+
+  public stopAnimation(): void {
+    window.cancelAnimationFrame(this.animationNumber);
   }
 
   private drawTriangle(xPos: number, yPos: number, triangleSide: number): void {
@@ -97,7 +102,7 @@ export class TrianglesEffect {
       }
     }
     this.getMouseDistanceFromButtonCenter();
-    window.requestAnimationFrame(this.drawTriangles);
+    this.animationNumber = window.requestAnimationFrame(this.drawTriangles);
   }
 
   private getTriangleOpacity(maxOpacity: number): number {

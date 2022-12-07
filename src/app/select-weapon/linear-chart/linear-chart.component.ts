@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {CanvasLinearChartEffect} from "./canvas-linear-chart-effect";
 
 @Component({
@@ -6,7 +6,7 @@ import {CanvasLinearChartEffect} from "./canvas-linear-chart-effect";
   templateUrl: './linear-chart.component.html',
   styleUrls: ['./linear-chart.component.scss']
 })
-export class LinearChartComponent implements OnInit {
+export class LinearChartComponent implements OnInit, OnDestroy {
 
   @ViewChild('linearChartCanvas', { static: true }) linearChartCanvas: ElementRef<HTMLCanvasElement>;
   @ViewChild('linearChartCanvasContainer', { static: true }) linearChartCanvasContainer: ElementRef<HTMLElement>;
@@ -15,12 +15,16 @@ export class LinearChartComponent implements OnInit {
 
   constructor(private renderer: Renderer2) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.linearChartEffect = new CanvasLinearChartEffect(
       this.renderer,
       this.linearChartCanvas.nativeElement,
       this.linearChartCanvasContainer.nativeElement);
 
     this.linearChartEffect.initializeEffects();
+  }
+
+  public ngOnDestroy(): void {
+    this.linearChartEffect.stopAnimation();
   }
 }

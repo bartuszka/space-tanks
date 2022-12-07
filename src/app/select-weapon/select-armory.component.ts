@@ -19,6 +19,9 @@ import {headerInitialData} from "./weapon-list/models/heaer-initial-data.model";
 import {ArmoryBarChartData} from "./weapon-list/models/armory-bar-chart.model";
 import {createUserChartData} from "./weapon-list/functions/create-user-chart-data";
 import {ArmoryChartStyle} from "./weapon-list/models/armory-chart-style.model";
+import {BitNumbersOrientation} from "./weapon-list/models/bit-numbers-orientation.model";
+import {BitNumbersMode} from "./weapon-list/models/bit-numbers-mode.model";
+import {CardColorMode} from "./weapon-list/models/card-color-mode.model";
 
 @Component({
   selector: 'app-select-armory',
@@ -34,10 +37,13 @@ export class SelectArmoryComponent extends Destroyable implements OnInit {
   public weaponPercentage$: Observable<number>;
 
   public scrollingTableHeader: ScrollingTableHeader;
-  public armoryModes: typeof ArmoryMode = ArmoryMode;
   public selectedArmory: ArmoryItem;
   public userChartData: ArmoryBarChartData[] = createUserChartData();
+  public armoryModes: typeof ArmoryMode = ArmoryMode;
+  public bitNumbersOrientations: typeof BitNumbersOrientation = BitNumbersOrientation;
   public userChartStyles: typeof ArmoryChartStyle = ArmoryChartStyle;
+  public bitNumberModes: typeof BitNumbersMode = BitNumbersMode;
+  public cardColorModes: typeof CardColorMode = CardColorMode;
 
   constructor(private route: ActivatedRoute,
               private router: Router,

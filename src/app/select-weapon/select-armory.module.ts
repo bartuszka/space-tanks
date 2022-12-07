@@ -14,9 +14,15 @@ import {WeaponInformationComponent} from './weapon-information/weapon-informatio
 import {BarChartComponent} from './bar-chart/bar-chart.component';
 import {BarChartLevelDirective} from "./bar-chart/bar-chart-level.directive";
 import {WeaponInformationPiece} from "./weapon-information/wepon-information-piece/weapon-information-piece";
-import { CircleChartComponent } from './circle-chart/circle-chart.component';
+import {CircleChartComponent} from './circle-chart/circle-chart.component';
 import {CircleChartDirective} from "./circle-chart/circle-chart-directive";
-import { LinearChartComponent } from './linear-chart/linear-chart.component';
+import {LinearChartComponent} from './linear-chart/linear-chart.component';
+import {BitNumbersComponent} from './bit-numbers/bit-numbers.component';
+import {BitPointColorDirective} from "./bit-numbers/bit-point-color.directive";
+import {BitArrayFromNumberPipe} from "./bit-numbers/bit-array-from-number.pipe";
+import { SquareBorderComponent } from './square-border/square-border.component';
+import {ArrayFromNumberPipe} from "./square-border/array-from-number.pipe";
+import {SquaresInColPipe} from "./square-border/squares-in-col.pipe";
 
 @NgModule({
   imports: [
@@ -32,6 +38,9 @@ import { LinearChartComponent } from './linear-chart/linear-chart.component';
     SelectWeaponSliderComponent,
     VisibleTableItemsPipe,
     IsLastUserPipe,
+    BitArrayFromNumberPipe,
+    ArrayFromNumberPipe,
+    SquaresInColPipe,
     WeaponInformationComponent,
     BarChartComponent,
     WeaponInformationPiece,
@@ -39,7 +48,10 @@ import { LinearChartComponent } from './linear-chart/linear-chart.component';
     SelectWeaponSliderDirective,
     BarChartLevelDirective,
     CircleChartDirective,
+    BitPointColorDirective,
     LinearChartComponent,
+    BitNumbersComponent,
+    SquareBorderComponent,
   ],
   providers: [
     VisibleTableItemsPipe,

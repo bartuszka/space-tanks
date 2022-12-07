@@ -1,4 +1,5 @@
 <div class="background"></div>
+
 <div class="select-weapon-container" *ngIf="activeUsers$ | async as activeUsers">
   <div class="flex-container-row first-row">
     <app-cornered-container *ngIf="activeUser$ | async as activeUser">
@@ -74,8 +75,85 @@
       <app-linear-chart></app-linear-chart>
     </app-cornered-container>
 
-    <!--<app-cornered-container>
-      <app-linear-chart></app-linear-chart>
-    </app-cornered-container>-->
+    <app-cornered-container>
+      <app-bit-numbers [mode]="bitNumberModes.NUMBERS"
+                       [orientation]="bitNumbersOrientations.HORIZONTAL"
+                       [bitCols]="4"
+                       [bitRows]="4"
+                       [bitSegments]="6">
+      </app-bit-numbers>
+    </app-cornered-container>
+  </div>
+
+  <div class="left-side-effects">
+    <app-bit-numbers class="effects-segment"
+                     [mode]="bitNumberModes.POINTS"
+                     [orientation]="bitNumbersOrientations.VERTICAL"
+                     [bitCols]="6"
+                     [bitRows]="2"
+                     [bitSegments]="4">
+    </app-bit-numbers>
+
+    <app-bit-numbers class="effects-segment"
+                     [mode]="bitNumberModes.NUMBERS"
+                     [orientation]="bitNumbersOrientations.VERTICAL"
+                     [bitCols]="4"
+                     [bitRows]="4"
+                     [bitSegments]="2">
+    </app-bit-numbers>
+
+    <app-bit-numbers class="effects-segment"
+                     [mode]="bitNumberModes.POINTS"
+                     [orientation]="bitNumbersOrientations.VERTICAL"
+                     [bitCols]="2"
+                     [bitRows]="10"
+                     [bitSegments]="1">
+    </app-bit-numbers>
+  </div>
+
+  <div class="right-side-effects">
+    <div class="cards-and-numbers">
+      <div class="empty-cards">
+        <app-select-weapon-card [colorMode]="cardColorModes.BLUE"></app-select-weapon-card>
+        <app-select-weapon-card [colorMode]="cardColorModes.VIOLET"></app-select-weapon-card>
+        <app-select-weapon-card [colorMode]="cardColorModes.VIOLET"></app-select-weapon-card>
+        <app-select-weapon-card [colorMode]="cardColorModes.BLUE"></app-select-weapon-card>
+        <app-select-weapon-card [colorMode]="cardColorModes.VIOLET"></app-select-weapon-card>
+        <app-select-weapon-card [colorMode]="cardColorModes.BLUE"></app-select-weapon-card>
+        <app-select-weapon-card [colorMode]="cardColorModes.BLUE"></app-select-weapon-card>
+      </div>
+
+      <app-bit-numbers class="effects-segment"
+                       [mode]="bitNumberModes.NUMBERS"
+                       [orientation]="bitNumbersOrientations.VERTICAL"
+                       [bitCols]="2"
+                       [bitRows]="7"
+                       [bitSegments]="2">
+      </app-bit-numbers>
+    </div>
+
+    <app-bit-numbers class="effects-segment"
+                     [mode]="bitNumberModes.POINTS"
+                     [orientation]="bitNumbersOrientations.VERTICAL"
+                     [bitCols]="4"
+                     [bitRows]="2"
+                     [bitSegments]="4">
+    </app-bit-numbers>
+
+    <app-bit-numbers class="effects-segment"
+                     [mode]="bitNumberModes.NUMBERS"
+                     [orientation]="bitNumbersOrientations.VERTICAL"
+                     [bitCols]="3"
+                     [bitRows]="2"
+                     [bitSegments]="3">
+    </app-bit-numbers>
+  </div>
+
+  <div class="top-effects">
+    <app-square-border [repeatX]="46"></app-square-border>
+  </div>
+
+  <div class="bottom-effects">
+    <app-square-border [repeatX]="46" [hideBigSquares]="true"></app-square-border>
   </div>
 </div>

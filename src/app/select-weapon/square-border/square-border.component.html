@@ -1,0 +1,17 @@
+<div *ngFor="let xRep of repeatX | arrayFromNumber; let i = index"
+     class="square-col">
+
+  <ng-container *ngIf="i % 2 === 0 && !hideBigSquares; else squareSmall">
+    <div class="squares-big-col">
+      <div *ngFor="let square of 3 | arrayFromNumber | squaresInCol"
+           class="square-big"
+           bitPointColor></div>
+    </div>
+  </ng-container>
+
+  <ng-template #squareSmall>
+    <div class="square-small"
+         [class.big-space]="hideBigSquares"
+         bitPointColor></div>
+  </ng-template>
+</div>

@@ -3,7 +3,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  Input,
+  Input, OnDestroy,
   OnInit,
   Output,
   Renderer2,
@@ -21,7 +21,7 @@ import {userModeData, UserModeData} from "./models/user-mode-data";
   templateUrl: './user-box.component.html',
   styleUrls: ['./user-box.component.scss'],
 })
-export class UserBoxComponent extends Destroyable implements OnInit, AfterViewInit {
+export class UserBoxComponent extends Destroyable implements OnInit, AfterViewInit, OnDestroy {
   @Output() public userChanged: EventEmitter<User> = new EventEmitter<User>();
   @Input() public boxId: number;
 
@@ -56,6 +56,11 @@ export class UserBoxComponent extends Destroyable implements OnInit, AfterViewIn
     this.setCanvasEffect();
   }
 
+  public override ngOnDestroy(): void {
+    super.ngOnDestroy();
+    this.trianglesEffect.stopAnimation();
+  }
+
   public changeUserMode(userMode: UserMode): void {
     this.setSavedUser(this.userForm.value);
     this.setFormDataForUserMode(userMode);
@@ -76,8 +81,9 @@ export class UserBoxComponent extends Destroyable implements OnInit, AfterViewIn
   }
 
   private initializeUserForm(user: User): void {
-    this.userForm = this.fb.group(user);
-    this.userForm.setValue(user);
+    const userFormData: { [key: string]: any } = { ...user };
+    Object.keys({ ...user }).forEach((key: string) => userFormData[key] = [userFormData[key]]);
+    this.userForm = this.fb.group(userFormData);
   }
 
   private setCanvasEffect(): void {

@@ -13,6 +13,7 @@ import {MainMenuRoutingModule} from "./main-menu-routing.module";
 import {LaserButtonComponent} from "./laser-button/laser-button.component";
 import {LaserStepperComponent} from "./laser-stepper/laser-stepper.component";
 import {UserBoxFocusOutDirective} from "./user-box/user-box-focus-out.directive";
+import {LaserStepperFocusedDirective} from "./laser-stepper/laser-stepper-focused.directive";
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import {UserBoxFocusOutDirective} from "./user-box/user-box-focus-out.directive"
     InnerSliderComponent,
     InnerSliderDirective,
     UserBoxFocusOutDirective,
+    LaserStepperFocusedDirective,
   ]
 })
 export class MainMenuModule {}

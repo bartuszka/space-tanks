@@ -1,0 +1,35 @@
+$small-square-size: 7px;
+
+@function getBigSquareSize($square-small-size) {
+  @return $square-small-size * 3;
+}
+
+.square-col {
+  display: inline-block;
+  opacity: .4;
+
+  .square-big, .square-small {
+    margin: $small-square-size;
+  }
+
+  .square-small {
+    height: $small-square-size;
+    width: $small-square-size;
+
+    &.big-space {
+      margin: $small-square-size 10.5px;
+    }
+  }
+
+  .squares-big-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .square-big {
+      height: getBigSquareSize($small-square-size);
+      width: getBigSquareSize($small-square-size);
+    }
+  }
+}
+
