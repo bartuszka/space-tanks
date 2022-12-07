@@ -5,7 +5,8 @@
     <span>{{ endLabel }}</span>
   </div >
   <app-inner-slider (innerSliderValueSet)="value = $event"
-                    (focusout)="onBlur()"
+                    (keyup)="onBlur()"
+                    (click)="onBlur()"
                     [minValue]="minValue"
                     [maxValue]="maxValue"
                     [initialValue]="value">

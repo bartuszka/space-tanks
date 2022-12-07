@@ -52,16 +52,16 @@ export class SelectWeaponSliderDirective implements AfterViewInit {
     window.addEventListener('mousemove', this.mouseMovingListener)
   }
 
-  @HostListener('focusin', ['$event']) keyboardPressed() {
+  @HostListener('focusin') keyboardPressed() {
     this.keyboardPressingListener = this.keyboardPressingListenerHandler.bind(this);
     window.addEventListener('keydown', this.keyboardPressingListener);
   }
 
-  @HostListener('focusout', ['$event']) keyboardFocusedOut() {
+  @HostListener('focusout') keyboardFocusedOut() {
     this.clearKeyboardInterval();
   }
 
-  @HostListener('window:click', ['$event']) mouseReleased() {
+  @HostListener('window:mouseup') mouseReleased() {
     this.clearMouseInterval();
   }
 

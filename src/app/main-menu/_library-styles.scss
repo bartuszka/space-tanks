@@ -36,7 +36,7 @@ $user-box-background: rgba(0,0,0,.4);
     color: white;
     background-color: transparent;
 
-    &:active {
+    &:active, &.firefox-active-keyboard {
       color: red;
     }
   }
@@ -106,7 +106,10 @@ $user-box-background: rgba(0,0,0,.4);
     right: 0;
   }
 
-  &:hover, &:focus-visible, &:has(button:focus-visible) {
+  &:hover,
+  &:focus-visible,
+  &:has(button:focus-visible),
+  &.firefox-focus-visible {
     outline: none;
     background-color: transparent;
     box-shadow: none;

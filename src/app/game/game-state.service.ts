@@ -32,10 +32,10 @@ export class GameStateService {
 
   public setUser(user: User): void {
     const currentState: GameState = this.gameStateSubject$.getValue();
-    const currentUsers: User[] = currentState.users;
-    const updatedUserIndex: number = currentUsers.findIndex((currentUser: User) => currentUser.id === user.id);
-    currentUsers[updatedUserIndex] = user;
-    this.gameStateSubject$.next({ ...currentState, users: currentUsers });
+    const updatedUsers: User[] = [ ...currentState.users ];
+    const updatedUserIndex: number = updatedUsers.findIndex((currentUser: User) => currentUser.id === user.id);
+    updatedUsers[updatedUserIndex] = { ...user };
+    this.gameStateSubject$.next({ ...currentState, users: updatedUsers });
   }
 
   public addArmory(user: User, armoryItem: ArmoryItem): void {

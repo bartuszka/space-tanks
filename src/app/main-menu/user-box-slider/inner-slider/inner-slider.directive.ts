@@ -86,11 +86,13 @@ export class InnerSliderDirective implements AfterViewInit, OnDestroy {
   }
 
   private switchSliderHead = (event: KeyboardEvent): void => {
-    const step = 10 * (event.key === 'ArrowRight' ? 1 : -1);
-    let currentSliderHeadPosition: number = Math.floor(this.elRef.nativeElement.offsetLeft + step);
-    currentSliderHeadPosition = currentSliderHeadPosition >= 0 ? currentSliderHeadPosition : 0;
-    currentSliderHeadPosition = currentSliderHeadPosition <= this.maxSliderHeaderPosition ? currentSliderHeadPosition : this.maxSliderHeaderPosition;
-    this.setSliderHeadPosition(currentSliderHeadPosition);
+    if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+      const step = 10 * (event.key === 'ArrowRight' ? 1 : -1);
+      let currentSliderHeadPosition: number = Math.floor(this.elRef.nativeElement.offsetLeft + step);
+      currentSliderHeadPosition = currentSliderHeadPosition >= 0 ? currentSliderHeadPosition : 0;
+      currentSliderHeadPosition = currentSliderHeadPosition <= this.maxSliderHeaderPosition ? currentSliderHeadPosition : this.maxSliderHeaderPosition;
+      this.setSliderHeadPosition(currentSliderHeadPosition);
+    }
   }
 
   private setSliderHeadPosition(sliderHeadPosition: number): void {
